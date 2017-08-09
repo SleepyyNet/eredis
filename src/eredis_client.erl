@@ -57,9 +57,9 @@
                  ReconnectSleep::reconnect_sleep(),
                  ConnectTimeout::integer() | undefined) ->
                         {ok, Pid::pid()} | {error, Reason::term()}.
-start_link(Host, Port, Database, Password, ReconnectSleep, ConnectTimeout) ->
+start_link(Host, Port, Database, Password, ReconnectSleep, ConnectTimeout, Opts) ->
     gen_server:start_link(?MODULE, [Host, Port, Database, Password,
-                                    ReconnectSleep, ConnectTimeout], []).
+                                    ReconnectSleep, ConnectTimeout], Opts).
 
 
 stop(Pid) ->
