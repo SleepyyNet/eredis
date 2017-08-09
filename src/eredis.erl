@@ -46,7 +46,10 @@ start_link(Host, Port, Database, Password) ->
 start_link(Host, Port, Database, Password, ReconnectSleep) ->
     start_link(Host, Port, Database, Password, ReconnectSleep, ?TIMEOUT).
 
-start_link(Host, Port, Database, Password, ReconnectSleep, ConnectTimeout)
+start_link(Host, Port, Database, Password, ReconnectSleep, ConnectTimeout) ->
+    start_link(Host, Port, Database, Password, ReconnectSleep, ConnectTimeout, []).
+
+start_link(Host, Port, Database, Password, ReconnectSleep, Opts, ConnectTimeout, Opts)
   when is_list(Host),
        is_integer(Port),
        is_integer(Database) orelse Database == undefined,
@@ -55,7 +58,7 @@ start_link(Host, Port, Database, Password, ReconnectSleep, ConnectTimeout)
        is_integer(ConnectTimeout) ->
 
     eredis_client:start_link(Host, Port, Database, Password,
-                             ReconnectSleep, ConnectTimeout).
+                             ReconnectSleep, ConnectTimeout, Opts).
 
 %% @doc: Callback for starting from poolboy
 -spec start_link(server_args()) -> {ok, Pid::pid()} | {error, Reason::term()}.
