@@ -49,7 +49,7 @@ start_link(Host, Port, Database, Password, ReconnectSleep) ->
 start_link(Host, Port, Database, Password, ReconnectSleep, ConnectTimeout) ->
     start_link(Host, Port, Database, Password, ReconnectSleep, ConnectTimeout, []).
 
-start_link(Host, Port, Database, Password, ReconnectSleep, Opts, ConnectTimeout, Opts)
+start_link(Host, Port, Database, Password, ReconnectSleep, ConnectTimeout, Opts)
   when is_list(Host),
        is_integer(Port),
        is_integer(Database) orelse Database == undefined,
